@@ -7,6 +7,9 @@ using System.IO;
 
 namespace AdminSiteClasses
 {
+    /// <summary>
+    /// The class <c>Log</c> provides methods for logging various types of errors in a text file.
+    /// </summary>
     internal class Log
     {
         private string _dir;
@@ -26,7 +29,7 @@ namespace AdminSiteClasses
                 Directory.CreateDirectory(_dir);
             }
 
-            _path = _dir + @"\log.txt";
+            _path = _dir + @$"\log {DateTime.Now}.txt";
         }
 
         private string GetCurrentTime()
@@ -36,32 +39,32 @@ namespace AdminSiteClasses
 
         public void Verbose (string message)
         {
-            SendMessage($"{GetCurrentTime()}, VERBOSE: {message} ");
+            SendMessage($"{GetCurrentTime()}: VERBOSE: {message} ");
         }
 
         public void Debug (string message)
         {
-            SendMessage($"{GetCurrentTime()}, DEBUG: {message} ");
+            SendMessage($"{GetCurrentTime()}: DEBUG: {message} ");
         }
 
         public void Information (string message)
         {
-            SendMessage($"{GetCurrentTime()}, INFORMATION: {message} ");
+            SendMessage($"{GetCurrentTime()}: INFORMATION: {message} ");
         }
 
         public void Warning (string message)
         {
-            SendMessage($"{GetCurrentTime()}, WARNING: {message} ");
+            SendMessage($"{GetCurrentTime()}: WARNING: {message} ");
         }
 
         public void Error (string message)
         {
-            SendMessage($"{GetCurrentTime()}, ERROR: {message} ");
+            SendMessage($"{GetCurrentTime()}: ERROR: {message} ");
         }
 
         public void Fatal (string message)
         {
-            SendMessage($"{GetCurrentTime()}, FATAL: {message} ");
+            SendMessage($"{GetCurrentTime()}: FATAL: {message} ");
         }
 
         private void SendMessage (string message)
