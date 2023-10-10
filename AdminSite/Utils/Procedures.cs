@@ -17,6 +17,7 @@ namespace AdminSite.Utils
         InsertNewUser,
         ValidateUser,
         GetTop5Images,
-        InsertSpec
+        InsertSpec,
+        UpdateUser
     }
 }

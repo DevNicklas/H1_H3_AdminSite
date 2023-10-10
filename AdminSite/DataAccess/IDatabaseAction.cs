@@ -9,9 +9,6 @@ namespace AdminSite.DataAccess
     /// </summary>
     public interface IDatabaseAction
     {
-        public DataTable Value { get; }
         public string ConnectionString { get; }
-        public Procedures Procedure { get; }
-        public Dictionary<string, string> Parameters { get; }
     }
 }
