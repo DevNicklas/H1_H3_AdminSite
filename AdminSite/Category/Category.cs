@@ -17,23 +17,6 @@ namespace AdminSite.Category
         private int _id;
         private string _name;
 
-        public Category(DataTable catData)
-        {
-            try
-            {
-                if (catData == null)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _name = catData.Rows[0]["Name"].ToString();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         public int Id
         {
             get { return _id; }
@@ -53,7 +36,7 @@ namespace AdminSite.Category
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    {"@Name", Name }
+                    { "@Name", Name }
                 };
 
                 dbAction.GetData(Procedures.CreateNewCategory, parameters);
@@ -64,14 +47,14 @@ namespace AdminSite.Category
                 throw;
             }
         }
-        /* DOESN'T EXIST (SP)
+
         public bool Delete(DatabaseAction dbAction)
         {
             try
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    {"@Name", Name }
+                    { "@ID", Id.ToString() }
                 };
 
                 dbAction.GetData(Procedures.CreateNewCategory, parameters);
@@ -81,15 +64,16 @@ namespace AdminSite.Category
             {
                 throw;
             }
-        } */
-        /* DOESN'T EXIST (SP)
+        } 
+
         public bool Update(DatabaseAction dbAction)
         {
             try
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    {"@Name", Name }
+                    { "@ID", Id.ToString() },
+                    { "@Name", Name }
                 };
 
                 dbAction.GetData(Procedures.CreateNewCategory, parameters);
@@ -99,11 +83,7 @@ namespace AdminSite.Category
             {
                 throw;
             }
-        }*/
-
-        // NewCategory
-
-        // UpdateCategory
+        }
     }
 
 }
