@@ -21,7 +21,7 @@ namespace AdminSite.DataAccess
         /// <param name="connectionString">The connection string to the database.</param>
         /// <param name="parameters">Optional dictionary of parameters for database operations.</param>
         /// <exception cref="ArgumentNullException">Thrown if the connection string is null or empty.</exception>
-        private DatabaseAction(string connectionString, Dictionary<string, string> parameters)
+        protected DatabaseAction(string connectionString, Dictionary<string, string> parameters)
         {
             if (string.IsNullOrEmpty(ConnectionString))
             {
