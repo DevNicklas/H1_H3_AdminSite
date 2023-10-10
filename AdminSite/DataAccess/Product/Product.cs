@@ -1,9 +1,11 @@
 ﻿using AdminSite.Utils;
-using System;
 using System.Drawing;
 
 namespace AdminSite.DataAccess.Product
 {
+    /// <summary>
+    /// <c>Product</c> models a product.
+    /// </summary>
     public class Product : IProduct, IStandardActions
     {
         private int _productId;
