@@ -11,7 +11,7 @@ namespace AdminSite.DataAccess.Users
     public class User : IUser, IStandardActions
     {
         private string _userId;
-        private string _username;
+        private string _userName;
         private Roles _userRole;
         private string? _enteredPassword;
 
@@ -19,9 +19,14 @@ namespace AdminSite.DataAccess.Users
         {
             try
             {
+                if(UserData == null)
+                {
+                    throw new ArgumentNullException();
+                }
+
                 _userId = UserData.Rows[0]["ID"].ToString();
-                _userRole = (Roles)Enum.Parse(typeof(Roles), UserData.Rows[0]["Role"].ToString());
-                _username = UserData.Rows[0]["UserName"].ToString();
+                _userRole = UserData.Rows[0]["Role"].ToString().ToRole();
+                _userName = UserData.Rows[0]["UserName"].ToString();
                 _enteredPassword = enteredPassword;
             }
             catch
@@ -52,11 +57,11 @@ namespace AdminSite.DataAccess.Users
         {
             get
             {
-                return _username;
+                return _userName;
             }
             private set
             {
-                _username = value;
+                _userName = value;
             }
         }
 
@@ -126,7 +131,7 @@ namespace AdminSite.DataAccess.Users
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    { "@IS", UserId }
+                    { "@ID", UserId }
                 };
                 databaseAction.GetData(Procedures.DeleteUser, parameters);
                 return true;
