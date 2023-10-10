@@ -1,5 +1,8 @@
 namespace AdminSite.Utils
 {
+    /// <summary>
+    /// All stored procedres.
+    /// </summary>
     public enum Procedures
     {
         //Products

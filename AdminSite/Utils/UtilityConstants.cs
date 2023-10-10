@@ -1,7 +1,13 @@
 namespace AdminSite.Utils
 {
+    /// <summary>
+    /// Constants that should be avilable everywhere on the website.
+    /// </summary>
     public static class UtilityConstants
     {
-        public const string CONNECTION_STRING = "Server=192.168.0.2;Database=Motocross;User Id=Admin;Password=Passw0rd!;";
+        /// <summary>
+        /// The connection string which connects to the database.
+        /// </summary>
+        public const string CONNECTION_STRING = "Server=192.168.0.5;Database=Motocross;User Id=Admin;Password=Passw0rd!;";
     }
 }
