@@ -12,7 +12,22 @@ namespace AdminSite.Utils
         /// <returns></returns>
         public static Roles ToRole(this string value)
         {
-            return (Roles)Enum.Parse(typeof(Roles), value);
+            try
+            {
+                return (Roles)Enum.Parse(typeof(Roles), value);
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new ArgumentNullException("Value is null or empty! ", ex);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("Value is not a valid Roles enum value! ", ex);
+            }
+            catch (OverflowException ex)
+            {
+                throw new OverflowException("Value is outside the valid range for enum Roles! ", ex);
+            }
         }
     }
 }
