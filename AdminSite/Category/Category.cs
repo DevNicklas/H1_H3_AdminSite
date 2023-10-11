@@ -1,40 +1,103 @@
-﻿using System;
+﻿using AdminSite.DataAccess;
+using AdminSite.Utils;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Category
+namespace AdminSite.Category
 {
-    private int _id;
-    private string _name;
-
-    private int SetId()
+    /// <summary>
+    /// The class <c>Category</c> represents an item Category eg. Helmet, Wheel etc. and their database values, id and name. 
+    /// </summary>
+    public class Category : ICategory, IStandardActions
     {
+        private int _id;
+        private string _name;
 
-    }
-
-    private string SetName()
-    {
-
-    }
-
-    private DataTable GetAllCategories()
-    {
-        public DataTable GetAllCategories()
+        public int Id
         {
-            DataTable dt = new DataTable();
+            get { return _id; }
+            private set { _id = value; }
+        }
 
-            using (SqlConnection conn = GetConnection())
+        public string Name
+        {
+            get { return _name; }
+            private set { _name = value; }
+        }
+
+        /// <summary>
+        /// Creates a new category in the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
+        public bool Create(DatabaseAction dbAction)
+        {
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("SelectAllCategories", conn))
+                Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    { "@Name", Name }
+                };
 
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        sda.Fill(dt);
-                    }
-                }
+                dbAction.GetData(Procedures.CreateNewCategory, parameters);
+                return true;
             }
+            catch
+            {
+                throw;
+            }
+        }
 
-            return dt;
+        /// <summary>
+        /// Deletes a category from the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
+        public bool Delete(DatabaseAction dbAction)
+        {
+            try
+            {
+                Dictionary<string, string> parameters = new Dictionary<string, string>
+                {
+                    { "@ID", Id.ToString() }
+                };
+
+                dbAction.GetData(Procedures.CreateNewCategory, parameters);
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        } 
+
+        /// <summary>
+        /// Updates (changes) the values (name) of a category in the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
+        public bool Update(DatabaseAction dbAction)
+        {
+            try
+            {
+                Dictionary<string, string> parameters = new Dictionary<string, string>
+                {
+                    { "@ID", Id.ToString() },
+                    { "@Name", Name }
+                };
+
+                dbAction.GetData(Procedures.CreateNewCategory, parameters);
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
+
 }
