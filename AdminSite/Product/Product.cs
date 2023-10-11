@@ -1,63 +1,63 @@
-﻿using System;
+﻿//using System;
 
-public class Product
-{
-    private int _id;
-    private byte _category;
-    private int _quantity;
-    private string _name;
-    private int _price;
-    private string _description;
+//public class Product
+//{
+//    private int _id;
+//    private byte _category;
+//    private int _quantity;
+//    private string _name;
+//    private int _price;
+//    private string _description;
 
-    public Product
+//    public Product
 
-    private int SetId()
-    {
+//    private int SetId()
+//    {
 
-    }
+//    }
 
-    private byte SetCategory ()
-    {
+//    private byte SetCategory ()
+//    {
 
-    }
+//    }
 
-    private int SetQuantity()
-    {
+//    private int SetQuantity()
+//    {
 
-    }
+//    }
 
-    private string SetName()
-    {
+//    private string SetName()
+//    {
 
-    }
+//    }
 
-    private int SetPrice()
-    {
+//    private int SetPrice()
+//    {
 
-    }
+//    }
 
-    private string SetDescription()
-    {
+//    private string SetDescription()
+//    {
 
-    }
+//    }
 
-    public DataTable GetAllProducts()
-    {
-        DataTable dt = new DataTable();
+//    public DataTable GetAllProducts()
+//    {
+//        DataTable dt = new DataTable();
 
-        using (SqlConnection conn = GetConnection())
-        {
-            using (SqlCommand cmd = new SqlCommand("GetAllProducts", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
+//        using (SqlConnection conn = GetConnection())
+//        {
+//            using (SqlCommand cmd = new SqlCommand("GetAllProducts", conn))
+//            {
+//                cmd.CommandType = CommandType.StoredProcedure;
 
-                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                {
-                    sda.Fill(dt);
-                }
-            }
-        }
+//                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+//                {
+//                    sda.Fill(dt);
+//                }
+//            }
+//        }
 
-        return dt;
-    }
-}
+//        return dt;
+//    }
+//}

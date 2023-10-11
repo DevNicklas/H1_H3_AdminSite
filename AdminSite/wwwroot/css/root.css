@@ -1,0 +1,18 @@
+/*
+    File: root.css
+    Author: Jonas Offersen
+    Date: 2023-10-11
+    Description: contains variables which should be accessible from anywhere within the site.
+    Version: 1.0
+*/
+
+:root {
+    --textColor: #000;
+    --inverseTextColor: #fff;
+    --themeMainColor: #A93226;
+    --lineColor: #C0392B;
+    --focusColor: #AEAEAE;
+    --font: Helvetica;
+    --backgroundColor: #fff;
+    --inputRadius: 7px;
+}
