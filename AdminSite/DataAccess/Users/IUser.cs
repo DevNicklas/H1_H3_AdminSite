@@ -9,7 +9,6 @@ namespace AdminSite.DataAccess.Users
     {
         public string UserId { get; }
         public string UserName { get; }
-        public string EnteredPassword { get; }
         public Roles UserRole { get; }
     }
 }

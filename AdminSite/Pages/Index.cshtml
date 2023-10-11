@@ -1,10 +1,21 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="login-box">
+    <div class="login-logo">
+        <img src="Images\NoBackground.png" />
+    </div>
+    <div class="login-page">
+        <h2>Login</h2>
+        <div>
+            <form method="post">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" autocomplete="off">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" style="-webkit-text-security: disc;" autocomplete="off">
+                <input type="submit" value="Login">
+            </form>
+        </div>
+		<label id="error-message">@Model.Error</label>
+    </div>
 </div>

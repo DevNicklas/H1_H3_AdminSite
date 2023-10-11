@@ -15,4 +15,8 @@
     <Folder Include="DataAccess\Users\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\favicon.ico" />
+  </ItemGroup>
+
 </Project>
