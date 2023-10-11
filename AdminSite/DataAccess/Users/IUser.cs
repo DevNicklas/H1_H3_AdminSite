@@ -1,10 +1,9 @@
 using AdminSite.Utils;
-using System.Data;
 
 namespace AdminSite.DataAccess.Users
 {
     /// <summary>
-    /// 
+    /// <c>IUser</c> defines a contract for classes which defindes a user.
     /// </summary>
     public interface IUser
     {

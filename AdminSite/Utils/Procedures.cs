@@ -1,23 +1,42 @@
 namespace AdminSite.Utils
 {
+    /// <summary>
+    /// All stored procedres.
+    /// </summary>
     public enum Procedures
     {
+        //Products
         InsertProduct,
         SelectProduct,
-        SubtractAmountFromProduct,
         DeleteProduct,
-        GetOrdersByUserID,
-        GetOrderItemsByOrderID,
+        UpdateProduct,
+        SelectAllProducts,
+        SubtractAmountFromProduct,
+
+        //Orderes
+        SelectOrdersByUserID,
+        SelectOrderItemsByOrderID,
         CreateOrder,
         DeleteOrderItem,
         CreateOrderItem,
+        
+        //Category
+        InsertCategory,
+        UpdateCategory,
+        DeleteCategory,
+        SelectAllCategories,
         CreateNewCategory,
-        GetUserIDByUserName,
+
+
+        //User
+        SelectUserIDByUserName,
         DeleteUser,
         InsertNewUser,
         ValidateUser,
-        GetTop5Images,
-        InsertSpec,
-        UpdateUser
+        UpdateUser,
+
+        //Misc
+        SelectTop5Images,
+        InsertSpec
     }
 }
