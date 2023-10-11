@@ -1,0 +1,85 @@
+﻿/*
+    File: login.css
+    Author: Jonas Offersen
+    Date: 2023-10-11
+    Description: Style for the login site.
+    Version: 1.0
+*/
+
+/* 
+    The main box on the login page 
+*/
+.login-box {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: var(--font);
+}
+
+/* The box containing the logo */
+.login-logo {
+    width: 50%;
+    background-color: var(--themeMainColor);
+    padding-top: 25vh;
+}
+
+    /* The logo element */
+    .login-logo img {
+        max-height: 400px;
+    }
+
+/* The page with the login elements */
+.login-page {
+    position: relative;
+    width: 50%;
+    padding-top: 35vh;
+}
+
+    /* Any div inside the login-page */
+    .login-page div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    /* Any form inside the login-page */
+    .login-page form {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+
+    /* Any input of the type text inside the login-page */
+    .login-page input[type="text"] {
+        padding: 5px;
+        border-radius: 7px;
+        border-color: var(--lineColor);
+    }
+
+    /* Any input of type submit inside the login-page */
+    .login-page input[type="submit"] {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: var(--themeMainColor);
+        color: var(--inverseTextColor);
+        text-align: center;
+        font-weight: bold;
+        border-radius: 7px;
+        border-color: var(--lineColor);
+        border-width: 3px;
+        cursor: pointer;
+    }
+
+    /* Any label inside the login-page */
+    .login-page label {
+        margin-top: 15px;
+    }
+
+    /* the error message div */
+#error-message {
+    color: var(--lineColor);
+}

@@ -1,6 +1,7 @@
 using AdminSite.Utils;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace AdminSite.DataAccess
 {
@@ -16,11 +17,10 @@ namespace AdminSite.DataAccess
         /// If the connection string is null or empty, an ArgumentNullException is thrown.
         /// </summary>
         /// <param name="connectionString">The connection string to the database.</param>
-        /// <param name="parameters">Optional dictionary of parameters for database operations.</param>
         /// <exception cref="ArgumentNullException">Thrown if the connection string is null or empty.</exception>
-        protected DatabaseAction(string connectionString, Dictionary<string, string> parameters)
+        public DatabaseAction(string connectionString)
         {
-            if (string.IsNullOrEmpty(ConnectionString))
+            if (string.IsNullOrEmpty(connectionString))
             {
                 throw new ArgumentNullException();
             }
@@ -54,17 +54,22 @@ namespace AdminSite.DataAccess
             DataTable data = new DataTable();
             using (SqlConnection connection = new SqlConnection(ConnectionString)) //instanciate the connection to the database.
             {
+                connection.Open();
                 using (SqlCommand command = new SqlCommand(procedure.ToString(), connection)) //instanciate the command to send to the database.
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     foreach (KeyValuePair<string,string> arg in parameters) //for each key value pair in Parameters (We've technically used to use 'var' here, but KeyValuePair is more accuarate.
                     {
                         command.Parameters.AddWithValue(arg.Key, arg.Value); //add parameters to the SqlCommand's Parameters.
                     }
+                    Debug.WriteLine(command.Parameters.Count);
                     using (SqlDataReader reader = command.ExecuteReader()) //execute the command
                     {
                         data.Load(reader); //load the data from the connection into the reader
                     }
                 }
+                connection.Close();
             }
             return data;
         }
