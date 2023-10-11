@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace AdminSite.Category
 {
     /// <summary>
-    /// 
+    /// The class <c>Category</c> represents an item Category eg. Helmet, Wheel etc. and their database values, id and name. 
     /// </summary>
     public class Category : ICategory, IStandardActions
     {
@@ -29,7 +29,11 @@ namespace AdminSite.Category
             private set { _name = value; }
         }
 
-        // RemoveCategory
+        /// <summary>
+        /// Creates a new category in the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
         public bool Create(DatabaseAction dbAction)
         {
             try
@@ -48,6 +52,11 @@ namespace AdminSite.Category
             }
         }
 
+        /// <summary>
+        /// Deletes a category from the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
         public bool Delete(DatabaseAction dbAction)
         {
             try
@@ -66,6 +75,11 @@ namespace AdminSite.Category
             }
         } 
 
+        /// <summary>
+        /// Updates (changes) the values (name) of a category in the database.
+        /// </summary>
+        /// <param name="dbAction"></param>
+        /// <returns></returns>
         public bool Update(DatabaseAction dbAction)
         {
             try
