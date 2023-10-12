@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace AdminSiteClasses
+namespace AdminSite
 {
     /// <summary>
     /// The class <c>Log</c> provides methods for logging various types of errors in a text file.
@@ -37,7 +37,7 @@ namespace AdminSiteClasses
                 Directory.CreateDirectory(_dir);
             }
 
-            _path = _dir + @$"\log {currentDate.ToShortDateString()}.txt";
+            _path = _dir + @$"\log {currentDate.ToShortDateString().Replace("/","-")}.txt";
         }
 
         /// <summary>

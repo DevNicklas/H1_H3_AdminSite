@@ -6,6 +6,9 @@ using System.Diagnostics;
 
 namespace AdminSite.Pages
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NewCategoryModel : PageModel
     {
         private string _categoryName;
@@ -17,10 +20,16 @@ namespace AdminSite.Pages
             set { _categoryName = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnGet()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnPost() 
         {
             if(ModelState.IsValid)

@@ -1,6 +1,7 @@
 using AdminSite.DataAccess;
 using AdminSite.DataAccess.Product;
 using AdminSite.Utils;
+using AdminSite;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -18,6 +19,7 @@ namespace AdminSite.Pages
         private int _category;
         private string _description;
         private List<string[]> _categories = new List<string[]>();
+        Log log = new Log();
 
         [BindProperty]
         public string ProductName
@@ -62,12 +64,19 @@ namespace AdminSite.Pages
 
         public void OnGet()
         {
-            GetAllCategories(new DatabaseAction(UtilityConstants.CONNECTION_STRING));
+            try
+            {
+                GetAllCategories(new DatabaseAction(UtilityConstants.CONNECTION_STRING));
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
         }
 
         private void GetAllCategories(DatabaseAction databaseAction)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>{};
+            Dictionary<string, string> parameters = new Dictionary<string, string> { };
             List<string[]> options = new List<string[]>();
 
             foreach (DataRow Row in databaseAction.GetData(Utils.Procedures.GetAllCategoriesWithID, parameters).Rows)
@@ -79,11 +88,18 @@ namespace AdminSite.Pages
 
         public void OnPost()
         {
-            if(ModelState.IsValid)
+            try
             {
-                DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
-                Product product = new Product(ProductName, Quantity, Price, Category, Description);
-                product.Create(dbAction);
+                if (ModelState.IsValid)
+                {
+                    DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
+                    Product product = new Product(ProductName, Quantity, Price, Category, Description);
+                    product.Create(dbAction);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
             }
         }
     }

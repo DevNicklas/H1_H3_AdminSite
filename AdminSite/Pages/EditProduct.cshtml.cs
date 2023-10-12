@@ -4,20 +4,28 @@ using AdminSite.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
-using AdminSite.Category;
-using System.Xml.Linq;
+using AdminSite;
 
 namespace AdminSite.Pages
 {
+    /// <summary>
+    /// <c>EditProductModel</c> controls the Edit Product Page.
+    /// </summary>
     public class EditProductModel : PageModel
     {
         private List<string[]> _productName;
+        private int _id;
         private int _quantity;
         private decimal _price;
         private int _category;
         private string _description;
         private List<string[]> _categories = new List<string[]>();
 
+        Log log = new Log();
+        DatabaseAction databaseAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
+        private bool delete;
+
+        #region Properties
         [BindProperty]
         public List<string[]> Products
         {
@@ -59,11 +67,53 @@ namespace AdminSite.Pages
             private set { _categories = value; }
         }
 
+        [BindProperty]
+        public bool Delete
+        {
+            get
+            {
+                return delete;
+            }
+
+            set
+            {
+                delete = value;
+            }
+        }
+        
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+        #endregion
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnGet()
         {
-            GetAllProducts(new DatabaseAction(UtilityConstants.CONNECTION_STRING));
+            try
+            {
+                GetAllProducts(databaseAction);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="databaseAction"></param>
         private void GetAllProducts(DatabaseAction databaseAction)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string> { };
@@ -71,24 +121,38 @@ namespace AdminSite.Pages
 
             foreach (DataRow Row in databaseAction.GetData(Utils.Procedures.GetAllProducts, parameters).Rows)
             {
-                options.Add(new string[6] { Row["ID"].ToString(), Row["Category"].ToString(), Row["Quantity"].ToString(), Row["Name"].ToString(), Row["Price"].ToString(), Row["Description"].ToString() });
+                options.Add(new string[6] { Row["Product_ID"].ToString(), Row["Category"].ToString(), Row["Quantity"].ToString(), Row["Name"].ToString(), Row["Price"].ToString(), Row["Description"].ToString() });
             }
             Products = options;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnPost()
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                Product product = new Product(Convert.ToInt32(Request.Form["ProductName"]), Request.Form["ProductName"].ToString(), Quantity, Price, Category, Description);
+                string deleteValue = Request.Form["Delete"];
+                if (!string.IsNullOrEmpty(deleteValue))
                 {
-                    Product product = new Product(id, name, Quantity, Price, Category, Description);
-                    if()
+                    // Convert the checkbox value to a bool
+                    Delete = deleteValue == "Delete";
                 }
-                catch
-                {
 
+                if (Delete)
+                {
+                    product.Delete(databaseAction);
                 }
+                else
+                {
+                    product.Update(databaseAction);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
             }
         }
     }

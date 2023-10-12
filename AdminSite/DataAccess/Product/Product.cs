@@ -194,7 +194,7 @@ namespace AdminSite.DataAccess.Product
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    { "@ID", ProductId.ToString() },
+                    { "@Product_ID", ProductId.ToString() },
                     { "@Category", Category.ToString() },
                     { "@Quantity", Quantity.ToString() },
                     { "@Name", Name },

@@ -6,6 +6,9 @@ using System.Diagnostics;
 
 namespace AdminSite.Pages
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -14,24 +17,26 @@ namespace AdminSite.Pages
         private string _password;
         private string _error;
 
+        Log log = new Log();
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-		[BindProperty]
-		public string Username
-		{
-			get { return _username; }
-			set { _username = value; }
-		}
+        [BindProperty]
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
 
-		[BindProperty]
-		public string Password
-		{
-			get { return _password; }
-		    set { _password = value; }
-		}
+        [BindProperty]
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
 
         public string Error
         {
@@ -39,32 +44,46 @@ namespace AdminSite.Pages
             set { _error = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
 		public void OnGet()
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            try
             {
-                DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
-                try
+                if (ModelState.IsValid)
                 {
-                    CurrentUser currentUser = new CurrentUser(dbAction, Username, Password);
-                    Error = "";
-                    Debug.WriteLine("Correct login, access granted");
-                    return RedirectToPage("/Main");
+                    DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
+                    try
+                    {
+                        CurrentUser currentUser = new CurrentUser(dbAction, Username, Password);
+                        Error = "";
+                        Debug.WriteLine("Correct login, access granted");
+                        return RedirectToPage("/Main");
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("Wrong login");
+                        Error = "Please try again";
+                        return Page();
+                    }
                 }
-                catch
-                {
-                    Debug.WriteLine("Wrong login");
-                    Error = "Please try again";
-                    return Page();
-                }
+                Error = "Please try again";
+                return Page();
             }
-            Error = "Please try again";
-            return Page();
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
         }
     }
 }
