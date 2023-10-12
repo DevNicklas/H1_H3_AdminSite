@@ -1,0 +1,73 @@
+﻿@page
+@model AdminSite.Pages.EditProductModel
+
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/edit-page.css" asp-append-version="true" />
+
+@Html.Partial("_Menu.cshtml")
+
+<!-- "Edit" page for the site's products ' -->
+<div class="edit-page">
+    <form>
+        <div class="edit-input">
+            <label for="ProductName">ProductName</label>
+            <select id="ProductName" name="ProductName">
+                <options>Select Product</options>
+                @{
+                    foreach (string[] category in @Model.Products)
+                    {
+                        <option value="@category[0]">@category[3]</option>
+                    }
+                }
+
+            </select>
+        </div>
+        <div class="edit-input">
+
+            <label for="Category_ID">Category</label>
+
+            <select id="Category_ID" name="Category_ID">
+
+                <option value="0">Choose category</option>
+
+                <option value="1">Wheel</option>
+
+                <option value="2">Seat</option>
+
+                <option value="3">Helmet</option>
+
+                <option value="4">Suit</option>
+
+                <option value="5">MX Bike</option>
+
+            </select>
+
+        </div>
+        <div class="edit-input">
+            <label for="Quantity">Quantity</label>
+            <input type="number" id="Quantity" name="Quantity" value="Quantity" />
+        </div>
+        <div class="edit-input">
+            <label for="Price">Price</label>
+            <input type="number" id="Price" value="Price" />
+        </div>
+
+        <div class="edit-input">
+            <label for="Description">Description</label>
+            <textarea type="text" id="Description" name="Description" value="Description" rows="5"></textarea>
+        </div>
+
+        <div class="edit-input checkbox">
+            <input type="checkbox" id="Delete" value="Delete" />
+            <label for="Delete">Delete</label>
+        </div>
+
+        <input type="submit" value="Edit Product" />
+    </form>
+</div>
+
+
+<footer>
+    &copy; 2023 Viking Motocross. All rights reserved.
+</footer>

@@ -1,4 +1,27 @@
 ﻿@page
 @model AdminSite.Pages.MainModel
 
-<h2>Velkommen til</h2>
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/welcome.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+
+<div>
+    <div class="welcome">
+        <header>
+            <h1>Welcome, ...[Username]</h1>
+        </header>
+
+        <section>
+            <p>
+                You are now in the admin area of our website.
+                Here, you have the power to manage and control various aspects of the site.
+                Please use your privileges responsibly.
+            </p>
+            <p>
+                If you have any questions or need assistance,
+                feel free to contact our support team.
+            </p>
+        </section>
+    </div>
+    @Html.Partial("_Menu.cshtml")
+</div>

@@ -1,0 +1,61 @@
+﻿@page
+@model AdminSite.Pages.EditUserModel
+
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/edit-page.css" asp-append-version="true" />
+
+@Html.Partial("_Menu.cshtml")
+
+<!-- "Edit" page for the site's users ' -->
+<div class="edit-page">
+    <form>
+        <div class="edit-input">
+            <label for="Username">Username</label>
+            <input type="text" id="Username" name="Username" value="Username" />
+        </div>
+        <div class="edit-input">
+            <label for="OldPassword">Old Password</label>
+            <input type="password" id="OldPassword" name="OldPassword" placeholder="Old Password" />
+        </div>
+        <div class="edit-input">
+            <label for="Password">Password</label>
+            <input type="password" id="Password" name="Password" placeholder="Password" />
+        </div>
+        <div class="edit-input">
+            <label for="RepeatPassword">RepeatPassword</label>
+            <input type="password" id="RepeatPassword" placeholder="RepeatPassword" />
+        </div>
+        <div class="edit-input">
+
+            <label for="SecQ">SecQ</label>
+
+            <select id="SecQ" class="mandatory" name="SecQ">
+
+                <option value="0">Choose security question</option>
+
+                <option value="1">What is your mother's maiden name?</option>
+
+                <option value="2">What was the name of your first pet?</option>
+
+                <option value="3">On which hospital were you born?</option>
+
+                <option value="4">What is the meaning of life, the universe and everything?</option>
+
+                <option value="5">Who's your daddy and what does he do?</option>
+
+            </select>
+
+        </div>
+        <div class="edit-input">
+            <label for="SecA">SecA</label>
+            <input type="text" id="SecA" name="SecA" value="SecA" />
+        </div>
+        <input type="submit" value="Edit User" />
+    </form>
+</div>
+
+
+<footer>
+    &copy; 2023 Viking Motocross. All rights reserved.
+</footer>

@@ -1,0 +1,17 @@
+﻿/*
+    File: welcome.css
+    Author: Jonas Offersen
+    Date: 2023-10-12
+    Description: contains css for the welcome page.
+    Version: 1.0
+*/
+
+.welcome {
+    text-align: center;
+    font-family: var(--font);
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: calc( 100% - 250px );
+}
+

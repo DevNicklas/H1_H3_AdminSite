@@ -1,0 +1,60 @@
+﻿/*
+    File: edit-page.css
+    Author: Jonas Offersen
+    Date: 2023-10-12
+    Description: contains variables which should be accessible from edit pages.
+    Version: 1.0
+*/
+
+/* Edit site-wide settings. Centres later input fields, and sets width, margin etc. */
+.edit-page {
+    width: 100%;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+    /* Sets edit-inputs to match edit-page styling, adding column flex-direction */
+    .edit-page .edit-input {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Sets form element width and centering.  */
+    .edit-page form {
+        width: 250px;
+        text-align: center;
+    }
+
+    /* Unified styling for edit-page input types */
+    .edit-page input[type="text"],
+    .edit-page input[type="password"],
+    .edit-page input[type="number"],
+    .edit-page select,
+    .edit-page textarea {
+        padding: 5px;
+        border-radius: 7px;
+        border: 2px solid var(--lineColor);
+        background-color: var(--backgroundColor);
+    }
+
+    /* Separate styling for edit button */
+    .edit-page input[type="submit"] {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: var(--themeMainColor);
+        color: var(--inverseTextColor);
+        text-align: center;
+        font-weight: bold;
+        border-radius: 7px;
+        border-color: var(--lineColor);
+        border-width: 3px;
+        cursor: pointer;
+    }
+
+    /* label element text adjusted to the left */
+    .edit-page .edit-input label {
+        text-align: left;
+    }

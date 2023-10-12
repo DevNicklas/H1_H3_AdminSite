@@ -1,0 +1,24 @@
+﻿@page
+@model AdminSite.Pages.EditCategoryModel
+
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/edit-page.css" asp-append-version="true" />
+
+@Html.Partial("_Menu.cshtml")
+
+<!-- "Edit" page for the site's categories ' -->
+<div class="edit-page">
+    <form>
+        <div class="edit-input">
+            <label for="Category">Category</label>
+            <input type="text" id="Category" name="Category" value="Category name" />
+        </div>
+        <input type="submit" value="Edit Category " />
+    </form>
+</div>
+
+
+<footer>
+    &copy; 2023 Viking Motocross. All rights reserved.
+</footer>

@@ -17,6 +17,11 @@ namespace AdminSite.Category
         private int _id;
         private string _name;
 
+        public Category(string name)
+        {
+            _name = name;
+        }
+
         public int Id
         {
             get { return _id; }

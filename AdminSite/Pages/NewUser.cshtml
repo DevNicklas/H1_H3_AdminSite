@@ -1,0 +1,46 @@
+﻿@page
+@model AdminSite.Pages.NewUserModel
+
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/new-page.css" asp-append-version="true" />
+
+@Html.Partial("_Menu.cshtml")
+
+<div class="new-page">
+    <form>
+        <H3>New User</H3>
+        <label>Elements marked with * are mandatory.</label>
+        <div class="new-input">
+            <label for="Username">Username*</label>
+            <input type="text" id="Username" class="mandatory" name="Username" placeholder="Username" required />
+        </div>
+        <div class="new-input">
+            <label for="Password">Password*</label>
+            <input type="password" id="Password" class="mandatory" name="Password" placeholder="Password" required />
+        </div>
+        <div class="new-input">
+            <label for="RepeatPassword">RepeatPassword*</label>
+            <input type="password" id="RepeatPassword" class="mandatory" placeholder="RepeatPassword" required />
+        </div>
+        <div class="new-input">
+            <label for="SecQ">SecQ*</label>
+            <select id="SecQ" class="mandatory" name="SecQ" required>
+                <option value="1">What is your mother's maiden name?</option>
+                <option value="2">What was the name of your first pet?</option>
+                <option value="3">On which hospital were you born?</option>
+                <option value="4">what is the meaning of life, the universe and everything?</option>
+                <option value="5">Who's your daddy and what does he do?</option>
+            </select>
+        </div>
+        <div class="new-input">
+            <label for="SecA">SecA*</label>
+            <input type="text" id="SecA" class="mandatory" name="SecA" placeholder="SecA" required />
+        </div>
+        <input type="submit" value="Create User" />
+    </form>
+</div>
+
+<footer>
+    &copy; 2023 Viking Motocross. All rights reserved.
+</footer>

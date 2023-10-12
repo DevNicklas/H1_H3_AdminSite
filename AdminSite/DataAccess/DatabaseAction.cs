@@ -63,7 +63,6 @@ namespace AdminSite.DataAccess
                     {
                         command.Parameters.AddWithValue(arg.Key, arg.Value); //add parameters to the SqlCommand's Parameters.
                     }
-                    Debug.WriteLine(command.Parameters.Count);
                     using (SqlDataReader reader = command.ExecuteReader()) //execute the command
                     {
                         data.Load(reader); //load the data from the connection into the reader

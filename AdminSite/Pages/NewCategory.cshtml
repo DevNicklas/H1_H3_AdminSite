@@ -1,0 +1,24 @@
+﻿@page
+@model AdminSite.Pages.NewCategoryModel
+
+<link rel="stylesheet" href="~/css/root.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/new-page.css" asp-append-version="true" />
+
+@Html.Partial("_Menu.cshtml")
+
+<div class="new-page">
+    <form method="post">
+        <H3>New Category</H3>
+        <label>Elements marked with * are mandatory.</label>
+        <div class="new-input">
+            <label for="CategoryName">CategoryName*</label>
+            <input type="text" id="CategoryName" class="mandatory" name="CategoryName" placeholder="CategoryName" required />
+        </div>
+        <input type="submit" value="Create Category" />
+    </form>
+</div>
+
+<footer>
+    &copy; 2023 Viking Motocross. All rights reserved.
+</footer>

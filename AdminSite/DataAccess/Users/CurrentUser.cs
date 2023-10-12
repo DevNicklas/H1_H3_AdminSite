@@ -66,7 +66,7 @@ public class CurrentUser : IUser
 		}
 	}
 
-	private DataTable ValidateUser(DatabaseAction databaseAction, string username = "Admin", string enteredPassword = "AdminHash")
+	private DataTable ValidateUser(DatabaseAction databaseAction, string username, string enteredPassword)
 	{
 		try
 		{

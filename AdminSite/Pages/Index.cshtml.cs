@@ -46,7 +46,6 @@ namespace AdminSite.Pages
 
         public IActionResult OnPost()
         {
-
             if (ModelState.IsValid)
             {
                 DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);

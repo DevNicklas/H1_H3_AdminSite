@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
 
 namespace AdminSite.Pages
 {
-    public class MainModel : PageModel
+    public class NewUserModel : PageModel
     {
-
-        public void OnGet(string userRole)
+        public void OnGet()
         {
         }
     }

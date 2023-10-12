@@ -10,7 +10,7 @@ namespace AdminSite.Utils
         SelectProduct,
         DeleteProduct,
         UpdateProduct,
-        SelectAllProducts,
+        GetAllProducts,
         SubtractAmountFromProduct,
 
         //Orderes
@@ -24,7 +24,7 @@ namespace AdminSite.Utils
         InsertCategory,
         UpdateCategory,
         DeleteCategory,
-        SelectAllCategories,
+        GetAllCategoriesWithID,
         CreateNewCategory,
 
 

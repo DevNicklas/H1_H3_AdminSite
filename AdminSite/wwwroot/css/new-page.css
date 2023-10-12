@@ -1,0 +1,61 @@
+﻿/*
+    File: new-page.css
+    Author: Jonas Offersen
+    Date: 2023-10-11
+    Description: contains variables which should be accessible from .new-page elements.
+    Version: 1.0
+*/
+
+/* The main element on the new page. */
+.new-page {
+    width: 100%;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font);
+}
+
+    /* new-input elements on the new-page */
+    .new-page .new-input {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* forms on the new-page */
+    .new-page form {
+        width: 250px;
+        text-align: center;
+    }
+
+    /* Any input of the type text inside the login-page */
+    .new-page input[type="text"],
+    .new-page input[type="password"],
+    .new-page input[type="number"],
+    .new-page textarea,
+    .new-page select {
+        border: 2px solid var(--lineColor);
+        padding: 5px;
+        border-radius: 7px;
+        background-color: white;
+    }
+
+    /* Any input of type submit inside the login-page */
+    .new-page input[type="submit"] {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: var(--themeMainColor);
+        color: var(--inverseTextColor);
+        text-align: center;
+        font-weight: bold;
+        border-radius: 7px;
+        border-color: var(--lineColor);
+        border-width: 3px;
+        cursor: pointer;
+    }
+
+    /* labels inside new-input elements */
+    .new-page .new-input label {
+        text-align: left;
+    }

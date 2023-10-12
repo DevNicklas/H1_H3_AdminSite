@@ -9,12 +9,26 @@ namespace AdminSite.DataAccess.Product
     public class Product : IProduct, IStandardActions
     {
         private int _productId;
-        private byte _category;
+        private int _category;
         private int _quantity;
         private string _name;
-        private int _price;
-        private Image _img;
+        private decimal _price;
+        private Image? _img;
         private string _description;
+
+        public Product(string name, int quantity, decimal price, int category, string description)
+        {
+            _name = name;
+            _quantity = quantity;
+            _price = price;
+            _category = category;
+            _description = description;
+        }
+        public Product(int id, string name, int quantity, decimal price, int category, string description) : this(name, quantity, price, category, description)
+        {
+            _productId = id;
+        }
+
 
         /// <summary>
         /// The ID of this product.
@@ -34,7 +48,7 @@ namespace AdminSite.DataAccess.Product
         /// <summary>
         /// The category of this product.
         /// </summary>
-        public byte Category
+        public int Category
         {
             get
             {
@@ -79,7 +93,7 @@ namespace AdminSite.DataAccess.Product
         /// <summary>
         /// The price of this product.
         /// </summary>
-        public int Price
+        public decimal Price
         {
             get
             {
