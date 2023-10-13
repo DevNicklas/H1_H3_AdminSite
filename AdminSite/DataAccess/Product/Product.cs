@@ -172,7 +172,7 @@ namespace AdminSite.DataAccess.Product
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
-                    {"@ID", ProductId.ToString() }
+                    {"@Product_ID", ProductId.ToString() }
                 };
                 databaseAction.GetData(Procedures.DeleteProduct, parameters);
                 return true;
