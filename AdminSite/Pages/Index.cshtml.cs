@@ -58,32 +58,25 @@ namespace AdminSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
+                try
                 {
-                    DatabaseAction dbAction = new DatabaseAction(UtilityConstants.CONNECTION_STRING);
-                    try
-                    {
-                        CurrentUser currentUser = new CurrentUser(dbAction, Username, Password);
-                        Error = "";
-                        Debug.WriteLine("Correct login, access granted");
-                        return RedirectToPage("/Main");
-                    }
-                    catch
-                    {
-                        Debug.WriteLine("Wrong login");
-                        Error = "Please try again";
-                        return Page();
-                    }
+                    CurrentUser currentUser = new CurrentUser(dbAction, Username, Password);
+                    Error = "";
+                    Debug.WriteLine("Correct login, access granted");
+                    return RedirectToPage("/Main");
                 }
-                Error = "Please try again";
-                return Page();
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Wrong login");
+                    Error = "Please try again";
+                    log.Error(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                log.Error(ex.Message);
-            }
+            Error = "Please try again";
+            return Page();
         }
     }
 }
